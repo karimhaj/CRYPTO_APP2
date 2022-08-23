@@ -1,0 +1,37 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body{
+  padding: 20px 10px;
+}
+
+.search-bar--container{
+  display: flex;
+  align-content: center;
+  justify-content: right;
+  padding-bottom: 20px;
+}
+
+.search-bar{
+  border: 2px solid  rgb(90, 14, 255) ;
+  height: 30px;
+  width: 150px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.rdt_Table{
+  border: 2px solid  rgb(90, 14, 255) ;
+}
+.rdt_TableRow:hover{
+  background-color: rgb(90, 14, 255);
+  color: white;
+}
+
+.rdt_TableHead{
+  color: rgb(0,0,0);
+  font-weight: bold;
+}
