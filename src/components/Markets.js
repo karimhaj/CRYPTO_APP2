@@ -81,12 +81,11 @@ export function Markets() {
 
   return (
     <div className="App">
-        {loading && <h3>Loading...</h3>}
         {error && <h3>an error has occurred.</h3>}
         {data && <>
           <div className="search-bar--container">
               <input type="text" value={searchedText} onChange={(event) => setSearchedText(event.target.value)} placeholder="search..." className="search-bar"/></div>
-              <DataTable columns={columns} data={money} pagination/></>
+              <DataTable columns={columns} data={money} pagination noDataComponent={<h2>Loading data...</h2>}/></>
         }
 
 

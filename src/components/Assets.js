@@ -50,10 +50,9 @@ useEffect(()=>{
 
   return (
     <div className="App">
-        {loading && <h3>Loading...</h3>}
         {error && <h3>an error has occurred.</h3>}
         {data && <>
-              <DataTable columns={columns} data={data} pagination/></>
+              <DataTable columns={columns} data={data} pagination noDataComponent={<h2>Loading data...</h2>}/></>
         }
 
 
