@@ -27,13 +27,14 @@ body{
   border: 2px solid  rgb(90, 14, 255) ;
 }
 .rdt_TableRow:hover{
-  background-color: rgb(202, 178, 255);
+  background-color: rgb(125, 64, 255);
   color: white;
 }
 
-.rdt_TableHead{
+.rdt_TableHeadRow{
   color: rgb(0,0,0);
   font-weight: bold;
+  font-size: 14px;
 }
 
 .nav-link{
@@ -48,13 +49,13 @@ body{
   color: rgb(90, 14, 255);
   text-decoration: underline;}
 
-.nav-link2{
-    color: rgb(0, 0, 0);
+  .nav-link2{
+    color: black;
     text-decoration: none;
     font-size: 15px;
     padding-left: 10px;
   }
-
-.nav-link2:hover{
-  color: rgb(0, 0, 0);
-}
+  
+  .nav-link2:hover {
+    color: rgb(255,255,255); 
+  }

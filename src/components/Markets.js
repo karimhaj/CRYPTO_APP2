@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 const columns = [
   {
-    name: "Nome Mercato",
+    name: "Market",
     selector: (row) => row.symbol,
     sortable: true,
   },
@@ -26,18 +26,6 @@ const columns = [
   },
 ];
 
-// https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false
-
-
-// async function fetcher2(){
-//   const fetchPrice = await fetch(url2)
-//   const fetchSymbols = await fetch(urlCrypto)
-//   const fetchPriceJson = await fetchPrice.json()
-//   const fetchSymbolsJson = await fetchSymbols.json()
-//   const concatData = await fetchSymbolsJson.concat(fetchPriceJson);
-
-// }
-
 
 export function Markets() {
  const {symbol, price, error, loading} = useFetchApi()
@@ -52,20 +40,6 @@ export function Markets() {
     return acc; }, {});
     let combined = symbol.map(sign=> Object.assign(sign, priceMap[sign.symbol]))
 
-    // const newCombined =useMemo(()=>{symbol.map(sign=> Object.assign(sign, priceMap[sign.symbol]))
-    // },[priceMap, symbol])
-  
-
-
-        //setFilteredData(combined?.filter(item=> item.symbol?.toLowerCase().includes(searchedText.toLowerCase())))
-    
-
-
-
-  // }, [price, symbol] )
-
-  // setData(symbol)
-  // console.log(data)
   
   let money = combined?.filter((coin)=> coin.symbol?.toLowerCase().includes(searchedText.toLowerCase()))
 
@@ -77,11 +51,6 @@ export function Markets() {
     setData(money)
   }, [money])
 
-  // useEffect(() => {
-  //   if (combined){
-  //     setFilteredData(combined?.filter(item=> item.symbol?.toLowerCase().includes(searchedText.toLowerCase())))
-  //   }
-  // }, [combined , searchedText])
 
   return (
     <div className="App">
@@ -100,18 +69,4 @@ export function Markets() {
 
 export default Markets;
 
-// import "./App.css";
-// import { Route, Routes } from "react-router-dom";
-// import { Home } from "./Home";
 
-// export function App() {
-//   return (
-//     <div>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//       </Routes>
-//     </div>
-//   );
-// }
-
-// export default App;
