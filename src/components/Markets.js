@@ -1,6 +1,7 @@
 import DataTable from "react-data-table-component";
-import { useCallback, useEffect, useMemo, useState } from "react"; 
+import { useEffect, useState } from "react"; 
 import { useFetchApi } from "./useFetchApi";
+import { useSearchParams } from "react-router-dom";
 
 
 const columns = [
@@ -27,8 +28,6 @@ const columns = [
 
 // https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false
 
-const urlCrypto = "https://api.binance.com/api/v3/exchangeInfo";
-const url2 = 'https://api.binance.com/api/v3/ticker/price'
 
 // async function fetcher2(){
 //   const fetchPrice = await fetch(url2)
@@ -43,13 +42,10 @@ const url2 = 'https://api.binance.com/api/v3/ticker/price'
 export function Markets() {
  const {symbol, price, error, loading} = useFetchApi()
   const [data, setData]= useState(symbol)
-  // const [filteredData, setFilteredData] = useState([])
   const [searchedText, setSearchedText] = useState('');
 
-
-  // const concatData = useCallback(()=>{
-  const concatData = symbol.concat(price)
-
+  const [searchParams] = useSearchParams(); 
+  const filterBaseAsset = searchParams.get('base_assets'); 
  
   let priceMap = price.reduce((acc, curr) => {
     acc[curr.symbol] = curr
@@ -71,7 +67,15 @@ export function Markets() {
   // setData(symbol)
   // console.log(data)
   
-  const money = combined?.filter((coin)=> coin.symbol?.toLowerCase().includes(searchedText.toLowerCase()))
+  let money = combined?.filter((coin)=> coin.symbol?.toLowerCase().includes(searchedText.toLowerCase()))
+
+  if(filterBaseAsset){
+    money = money.filter((data)=> data.baseAsset === filterBaseAsset)
+  }
+
+  useEffect(()=>{
+    setData(money)
+  }, [money])
 
   // useEffect(() => {
   //   if (combined){
@@ -81,11 +85,12 @@ export function Markets() {
 
   return (
     <div className="App">
+        {loading && <h2>Loading data...</h2>}
         {error && <h3>an error has occurred.</h3>}
         {data && <>
           <div className="search-bar--container">
               <input type="text" value={searchedText} onChange={(event) => setSearchedText(event.target.value)} placeholder="search..." className="search-bar"/></div>
-              <DataTable columns={columns} data={money} pagination noDataComponent={<h2>Loading data...</h2>}/></>
+              <DataTable columns={columns} data={data} pagination noDataComponent={<h2>Loading data...</h2>}/></>
         }
 
 

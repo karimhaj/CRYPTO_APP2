@@ -27,7 +27,7 @@ body{
   border: 2px solid  rgb(90, 14, 255) ;
 }
 .rdt_TableRow:hover{
-  background-color: rgb(90, 14, 255);
+  background-color: rgb(202, 178, 255);
   color: white;
 }
 
@@ -43,8 +43,18 @@ body{
   padding-left: 10px;
 }
 
+
 .nav-link:hover{
   color: rgb(90, 14, 255);
   text-decoration: underline;}
 
-  /* some text */
+.nav-link2{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 15px;
+    padding-left: 10px;
+  }
+
+.nav-link2:hover{
+  color: rgb(0, 0, 0);
+}

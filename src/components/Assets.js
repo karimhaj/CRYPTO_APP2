@@ -1,12 +1,15 @@
 import DataTable from "react-data-table-component";
 import { useEffect, useState } from "react"; 
 import { useFetchApi } from "./useFetchApi";
-
+import { Link } from 'react-router-dom'
 
 const columns = [
   {
     name: "Base assets",
-    selector: (row) => row.baseAsset,
+    selector: (row) =>(
+      <Link className="nav-link2" to={`/markets?base_assets=${row.baseAsset}`}>
+    {row.baseAsset}
+      </Link>),
     sortable: true,
   },
   {
@@ -50,6 +53,7 @@ useEffect(()=>{
 
   return (
     <div className="App">
+        {loading && <h2>Loading data...</h2>}
         {error && <h3>an error has occurred.</h3>}
         {data && <>
               <DataTable columns={columns} data={data} pagination noDataComponent={<h2>Loading data...</h2>}/></>
