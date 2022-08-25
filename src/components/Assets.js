@@ -1,6 +1,6 @@
 import DataTable from "react-data-table-component";
 import { useEffect, useState } from "react"; 
-import { useFetchApi } from "./useFetchApi";
+import { useFetchApi } from "../customHooks/useFetchApi";
 import { Link } from 'react-router-dom'
 
 const columns = [
