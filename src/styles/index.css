@@ -1,52 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *{
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'poppins' , sans-serif;
 }
 
 body{
-  padding: 20px 10px;
+  padding: 20px 40px;
 }
 
-.search-bar--container{
+.top-container{
   display: flex;
   align-content: center;
-  justify-content: right;
-  padding-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 10px;
 }
 
 .search-bar{
-  border: 2px solid  rgb(90, 14, 255) ;
+  border: 2px solid  rgb(0, 0, 0) ;
   height: 30px;
   width: 150px;
   padding: 0 10px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .rdt_Table{
-  border: 2px solid  rgb(90, 14, 255) ;
+  border: 2px solid  rgb(0, 0, 0) ;
 }
+.rdt_TableRow{
+  font-size: 17px;
+  position: relative;
+}
+
+.rdt_TableCol{
+  background-color: rgb(103, 65, 255);
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid black;
+}
+
 .rdt_TableRow:hover{
-  background-color: rgb(125, 64, 255);
-  color: white;
+  background-color: rgb(255, 189, 65);
+  color: rgb(0, 0, 0);
+  animation-name: shake-it;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake-it{
+  0%{
+    padding: 0 0 0 0px;
+  }
+  25%{
+    padding: 0 0 0 5px;
+  }
+  50%{
+    padding: 0 10px 0 0;
+  }
+  75%{
+    padding: 0 0 0 5px;
+  }
+  100%{
+    padding: 0 0 0 0px;
+  }
 }
 
 .rdt_TableHeadRow{
   color: rgb(0,0,0);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 17px;
 }
+
 
 .nav-link{
   color: black;
   text-decoration: none;
   font-size: 15px;
   padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link:focus{
+  font-weight: bold;
+  color: rgb(103, 65, 255);
+}
+
+.nav-icon{
+  width: 30px;
+  padding-right: 5px;
+}
+
+.nav-links{
+  display: flex;
+  align-content: center;
+}
+
+.nav-link-right{
+  padding-left: 40px;
 }
 
 
 .nav-link:hover{
-  color: rgb(90, 14, 255);
+  font-weight: bold;
   text-decoration: underline;}
 
   .nav-link2{
@@ -54,8 +113,38 @@ body{
     text-decoration: none;
     font-size: 15px;
     padding-left: 10px;
+    position: relative;
   }
   
   .nav-link2:hover {
-    color: rgb(255,255,255); 
+    color: rgb(0, 0, 0); 
   }
+
+
+
+  .page-title{
+    user-select: none;
+  }
+
+  .guide-intro-subtitle{
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    text-decoration: underline;
+  }
+
+  .guide-intro-p{
+    width: 400px;
+    line-height: 2;
+    text-align: justify;
+  }
+
+  .assets-tip{
+    display: block;
+  }
+
+@media screen and (max-width:950px) {
+  .assets-tip{
+    display: none;
+  }
+}

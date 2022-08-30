@@ -28,7 +28,7 @@ const columns = [
 
 
 export function Markets() {
- const {symbol, price, error, loading} = useFetchApi()
+ const {symbol, price, error} = useFetchApi()
   const [data, setData]= useState(symbol)
   const [searchedText, setSearchedText] = useState('');
 
@@ -54,10 +54,10 @@ export function Markets() {
 
   return (
     <div className="App">
-        {loading && <h2>Loading data...</h2>}
         {error && <h3>an error has occurred.</h3>}
         {data && <>
-          <div className="search-bar--container">
+          <div className="top-container">
+              <h1 className="page-title">Markets</h1>
               <input type="text" value={searchedText} onChange={(event) => setSearchedText(event.target.value)} placeholder="search..." className="search-bar"/></div>
               <DataTable columns={columns} data={data} pagination noDataComponent={<h2>Loading data...</h2>}/></>
         }

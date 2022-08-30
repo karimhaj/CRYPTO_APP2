@@ -10,17 +10,17 @@ const columns = [
       <Link className="nav-link2" to={`/markets?base_assets=${row.baseAsset}`}>
     {row.baseAsset}
       </Link>),
-    sortable: true,
+    sortable: true
   },
   {
     name: "Markets",
-    selector: (row) => row.markets,
+    selector: (row) =>row.markets,
     sortable: true,
   }
 ];
 
 export function Assets() {
- const {symbol, error, loading} = useFetchApi()
+ const {symbol, error} = useFetchApi()
  const [data, setData] = useState('')
  console.log(symbol)
 
@@ -47,9 +47,12 @@ useEffect(()=>{
 
   return (
     <div className="App">
-        {loading && <h2>Loading data...</h2>}
         {error && <h3>an error has occurred.</h3>}
         {data && <>
+              <div className="top-container">
+              <h1 className="page-title">Assets</h1>
+              <p className="assets-tip">Tip: Here are all the <b>Base assets</b>, <b>click on one of them to see only the markets you're intrested in</b></p>
+              </div>
               <DataTable columns={columns} data={data} pagination noDataComponent={<h2>Loading data...</h2>}/></>
         }
 
